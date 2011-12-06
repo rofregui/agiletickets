@@ -29,7 +29,6 @@ public class EspetaculosController {
 	private final Agenda agenda;
 	private Validator validator;
 	private Result result;
-	private Estabelecimento estabelecimento;
 
 	private final DiretorioDeEstabelecimentos estabelecimentos;
 
@@ -122,9 +121,5 @@ public class EspetaculosController {
 		}
 		validator.onErrorUse(status()).notFound();
 		return espetaculo;
-	}
-
-	private Estabelecimento criaEstabelecimento(Long id) {
-		return estabelecimentos.todos().get(0);
 	}
 }
