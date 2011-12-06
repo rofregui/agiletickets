@@ -43,10 +43,4 @@ public class SessaoTest {
 		Assert.assertTrue(this.s.podeReservar(4));
 	}
 	
-	@Test
-	public void deveVenderTodosIngressosDisponiveisZero() throws Exception {
-		this.s.setTotalIngressos(0);
-		
-		Assert.assertTrue(this.s.podeReservar(0));
-	}
 }
