@@ -41,7 +41,7 @@ public class EspetaculosController {
 	@Get @Path("/espetaculos")
 	public List<Espetaculo> lista() {
 		result.include("estabelecimentos", estabelecimentos.todos());
-		return agenda.espetaculos();
+		return agenda.listarEspetaculos();
 	}
 
 	@Post @Path("/espetaculos")
@@ -61,7 +61,7 @@ public class EspetaculosController {
 
 	@Get @Path("/sessao/{id}")
 	public void sessao(Long id) {
-		Sessao sessao = agenda.sessao(id);
+		Sessao sessao = agenda.obterSessao(id);
 		if (sessao == null) {
 			result.notFound();
 		}
@@ -71,7 +71,7 @@ public class EspetaculosController {
 
 	@Post @Path("/sessao/{sessaoId}/reserva")
 	public void reserva(Long sessaoId, final Integer qtdSolicitada) {
-		Sessao sessao = agenda.sessao(sessaoId);
+		Sessao sessao = agenda.obterSessao(sessaoId);
 		if (sessao == null) {
 			result.notFound();
 			return;
@@ -114,7 +114,7 @@ public class EspetaculosController {
 	}
 
 	private Espetaculo carregaEspetaculo(Long espetaculoId) {
-		Espetaculo espetaculo = agenda.espetaculo(espetaculoId);
+		Espetaculo espetaculo = agenda.obterEspetaculo(espetaculoId);
 		if (espetaculo == null) {
 			validator.add(new ValidationMessage("", ""));
 		}

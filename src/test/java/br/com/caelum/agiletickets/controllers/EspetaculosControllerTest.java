@@ -70,7 +70,7 @@ public class EspetaculosControllerTest {
 
 	@Test
 	public void deveRetornarNotFoundSeASessaoNaoExiste() throws Exception {
-		when(agenda.sessao(1234l)).thenReturn(null);
+		when(agenda.obterSessao(1234l)).thenReturn(null);
 
 		controller.sessao(1234l);
 
@@ -79,7 +79,7 @@ public class EspetaculosControllerTest {
 
 	@Test(expected=ValidationException.class)
 	public void naoDeveReservarZeroIngressos() throws Exception {
-		when(agenda.sessao(1234l)).thenReturn(new Sessao());
+		when(agenda.obterSessao(1234l)).thenReturn(new Sessao());
 
 		controller.reserva(1234l, 0);
 
@@ -91,7 +91,7 @@ public class EspetaculosControllerTest {
 		Sessao sessao = new Sessao();
 		sessao.setTotalIngressos(3);
 
-		when(agenda.sessao(1234l)).thenReturn(sessao);
+		when(agenda.obterSessao(1234l)).thenReturn(sessao);
 
 		controller.reserva(1234l, 5);
 
@@ -103,7 +103,7 @@ public class EspetaculosControllerTest {
 		Sessao sessao = new Sessao();
 		sessao.setTotalIngressos(5);
 
-		when(agenda.sessao(1234l)).thenReturn(sessao);
+		when(agenda.obterSessao(1234l)).thenReturn(sessao);
 
 		controller.reserva(1234l, 3);
 

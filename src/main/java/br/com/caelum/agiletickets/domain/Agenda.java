@@ -7,15 +7,15 @@ import br.com.caelum.agiletickets.models.Sessao;
 
 public interface Agenda {
 
-	List<Espetaculo> espetaculos();
+	List<Espetaculo> listarEspetaculos();
 
 	void cadastra(Espetaculo espetaculo);
 
-	List<Sessao> proximasSessoes(int maximo);
+	List<Sessao> listarProximasSessoes(int maximo);
 
-	Sessao sessao(Long sessaoId);
+	Sessao obterSessao(Long sessaoId);
 
-	Espetaculo espetaculo(Long espetaculoId);
+	Espetaculo obterEspetaculo(Long espetaculoId);
 
 	void agende(List<Sessao> sessoes);
 

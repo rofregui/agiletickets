@@ -23,7 +23,7 @@ public class JPAEspetaculoDao implements Agenda {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Espetaculo> espetaculos() {
+	public List<Espetaculo> listarEspetaculos() {
 		return manager.createQuery("select e from Espetaculo e").getResultList();
 	}
 
@@ -34,7 +34,7 @@ public class JPAEspetaculoDao implements Agenda {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Sessao> proximasSessoes(int maximo) {
+	public List<Sessao> listarProximasSessoes(int maximo) {
 		return manager.createQuery("select s from Sessao s where s.inicio > :hoje order by s.inicio")
 					.setParameter("hoje", relogio.agora())
 					.setMaxResults(maximo)
@@ -42,12 +42,12 @@ public class JPAEspetaculoDao implements Agenda {
 	}
 
 	@Override
-	public Sessao sessao(Long sessaoId) {
+	public Sessao obterSessao(Long sessaoId) {
 		return manager.find(Sessao.class, sessaoId);
 	}
 
 	@Override
-	public Espetaculo espetaculo(Long espetaculoId) {
+	public Espetaculo obterEspetaculo(Long espetaculoId) {
 		return manager.find(Espetaculo.class, espetaculoId);
 	}
 
