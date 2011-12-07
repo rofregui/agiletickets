@@ -85,10 +85,27 @@ public class Espetaculo {
 		if (inicio.isAfter(fim)) {
 			throw new Exception("Data de início deve estar antes o fim.");
 		}
+		
 		List<Sessao> sessoes = new ArrayList<Sessao>();
-		Sessao sessao = new Sessao();
-		sessao.setInicio(inicio.toDateTime(horario));
-		sessoes.add(sessao);
+		
+		int dias = Days.daysBetween(inicio, fim).getDays();
+		int multiplicador = 1;
+		switch (periodicidade) {
+		case SEMANAL:
+			dias = dias / 7;
+			multiplicador = 7;
+			break;
+		default:
+			break;
+		}
+		
+		
+		for (int i = 0; i <= dias; i++) {
+			Sessao sessao = new Sessao();
+			sessao.setInicio(inicio.plusDays(i*multiplicador).toDateTime(horario));
+			sessoes.add(sessao);
+		}
+		
 		return sessoes;
 	}
 
