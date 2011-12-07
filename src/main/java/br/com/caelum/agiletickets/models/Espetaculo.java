@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.joda.time.Days;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 
@@ -80,7 +81,10 @@ public class Espetaculo {
 		return estabelecimento;
 	}
 
-	public List<Sessao> criaSessoes(LocalDate inicio, LocalDate fim, LocalTime horario, Periodicidade periodicidade) {
+	public List<Sessao> criaSessoes(LocalDate inicio, LocalDate fim, LocalTime horario, Periodicidade periodicidade) throws Exception {
+		if (inicio.isAfter(fim)) {
+			throw new Exception("Data de início deve estar antes o fim.");
+		}
 		List<Sessao> sessoes = new ArrayList<Sessao>();
 		Sessao sessao = new Sessao();
 		sessao.setInicio(inicio.toDateTime(horario));

@@ -99,7 +99,7 @@ public class EspetaculosController {
 
 
 	@Post @Path("/espetaculo/{espetaculoId}/sessoes")
-	public void cadastraSessoes(Long espetaculoId, LocalDate inicio, LocalDate fim, LocalTime horario, Periodicidade periodicidade) {
+	public void cadastraSessoes(Long espetaculoId, LocalDate inicio, LocalDate fim, LocalTime horario, Periodicidade periodicidade) throws Exception {
 		Espetaculo espetaculo = carregaEspetaculo(espetaculoId);
 
 		List<Sessao> sessoes = espetaculo.criaSessoes(inicio, fim, horario, periodicidade);
