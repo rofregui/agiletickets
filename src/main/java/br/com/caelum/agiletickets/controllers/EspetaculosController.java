@@ -64,6 +64,7 @@ public class EspetaculosController {
 	}
 
 
+	@Get @Path("/sessao/{id}")
 	public Sessao sessao(Long id) {
 		Sessao sessao = agenda.obterSessao(id);
 		if (sessao == null) {
