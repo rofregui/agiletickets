@@ -107,20 +107,4 @@ public class EspetaculoTest {
 		Assert.assertEquals(dataInicio, sessoes.get(0).getInicio().toLocalDateTime());
 	}
 
-	@Test
-	public void deveCriarErroSessoesSemanaisComMaisDeUmaSemana() throws Exception {
-		LocalDateTime dataInicio = new LocalDateTime(2010, 12, 1, 17, 30, 0);
-		LocalDateTime dataFim    = new LocalDateTime(2011, 12, 21, 17, 30, 0);
-
-		Espetaculo espetaculo = new Espetaculo();
-		
-		List<Sessao> sessoes = espetaculo.criaSessoes(dataInicio.toLocalDate(), dataFim.toLocalDate(), dataInicio.toLocalTime(), Periodicidade.SEMANAL);
-
-		
-		Assert.assertNotNull(sessoes);
-		
-		Assert.assertEquals(1, sessoes.size());
-		
-		Assert.assertEquals(dataInicio, sessoes.get(0).getInicio().toLocalDateTime());
-	}
 }
