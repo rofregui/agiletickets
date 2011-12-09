@@ -102,9 +102,13 @@ public class EspetaculoTest {
 		
 		Assert.assertNotNull(sessoes);
 		
-		Assert.assertEquals(1, sessoes.size());
+		Assert.assertEquals(3, sessoes.size());
 		
 		Assert.assertEquals(dataInicio, sessoes.get(0).getInicio().toLocalDateTime());
+		Assert.assertEquals((new LocalDateTime(dataInicio)).plusWeeks(1), 
+				sessoes.get(1).getInicio().toLocalDateTime());
+		Assert.assertEquals((new LocalDateTime(dataInicio)).plusWeeks(2), 
+				sessoes.get(2).getInicio().toLocalDateTime());
 	}
 
 }
